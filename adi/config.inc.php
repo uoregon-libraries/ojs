@@ -4,7 +4,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [general]
-installed = On
+installed = Off
 base_url = "http://localhost:8080"
 strict = Off
 session_cookie_name = OJSSID
@@ -56,7 +56,7 @@ umask = 0022
 
 [security]
 force_ssl = Off
-session_cookie_secure = Off 
+session_cookie_secure = Off
 
 [email]
 default = log
