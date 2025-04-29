@@ -57,3 +57,6 @@ umask = 0022
 [security]
 force_ssl = Off
 session_cookie_secure = Off 
+
+[email]
+default = log
