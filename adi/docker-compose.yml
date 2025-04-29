@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: adi/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ../:/var/www/html
+      - ./config.inc.php:/var/www/html/config.inc.php
+    environment:
+      - OJS_DB_HOST=db
+      - OJS_DB_USER=ojs
+      - OJS_DB_PASSWORD=ojs_password
+      - OJS_DB_NAME=ojs
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=ojs
+      - MYSQL_USER=ojs
+      - MYSQL_PASSWORD=ojs_password
+      - MYSQL_ROOT_PASSWORD=root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+volumes:
+  mysql_data: 
