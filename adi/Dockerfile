@@ -23,6 +23,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Enable Apache modules
 RUN a2enmod rewrite
+RUN a2enmod headers
+
+# Configure Apache
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
 # Set working directory
 WORKDIR /var/www/html
