@@ -11,8 +11,12 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
     default-mysql-client \
-    libicu-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip intl
+    libmariadb-dev
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mbstring exif pcntl bcmath gd zip intl
 
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
@@ -32,17 +36,16 @@ RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all application files
+# Copy application files
 COPY . .
 
 # Install Node.js dependencies
 RUN npm install
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
-# Expose port 80
+# Expose port
 EXPOSE 80
 
 # Start Apache
