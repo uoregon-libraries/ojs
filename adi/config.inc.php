@@ -4,7 +4,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [general]
-installed = Off
+installed = On
 base_url = "http://localhost:8080"
 strict = Off
 session_cookie_name = OJSSID
@@ -12,7 +12,7 @@ session_lifetime = 30
 session_samesite = Lax
 scheduled_tasks = On
 scheduled_tasks_report_error_only = On
-time_zone = "UTC"
+time_zone = UTC
 date_format_short = "Y-m-d"
 date_format_long = "F j, Y"
 datetime_format_short = "Y-m-d h:i A"
@@ -23,7 +23,7 @@ restful_urls = Off
 trust_x_forwarded_for = On
 show_upgrade_warning = On
 enable_minified = On
-enable_beacon = On
+enable_beacon = Off
 sitewide_privacy_statement = Off
 user_validation_period = 28
 sandbox = Off
@@ -49,7 +49,7 @@ locale = en
 connection_charset = utf8
 
 [files]
-files_dir = files
+files_dir = /var/www/html/files
 public_files_dir = public
 public_user_dir_size = 5000
 umask = 0022
