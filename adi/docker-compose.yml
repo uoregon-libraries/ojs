@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build:
@@ -8,6 +10,7 @@ services:
     volumes:
       - ../:/var/www/html
       - ./config.inc.php:/var/www/html/config.inc.php
+      - ojs_files:/var/www/html/files
     environment:
       - OJS_DB_HOST=db
       - OJS_DB_USER=ojs
@@ -29,4 +32,5 @@ services:
       - "3307:3306"
 
 volumes:
-  mysql_data: 
+  mysql_data:
+  ojs_files: 
