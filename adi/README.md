@@ -81,4 +81,37 @@ This opens a MySQL shell connected to the database.
 
 ## Troubleshooting
 
-If you encounter issues with port conflicts, check if you have other services running on ports 8080 or 3307. You can modify the port mappings in the `docker-compose.yml` file if needed. 
+If you encounter issues with port conflicts, check if you have other services running on ports 8080 or 3307. You can modify the port mappings in the `docker-compose.yml` file if needed.
+
+## File Storage
+
+OJS stores uploaded files in a persistent Podman volume named `ojs_files`. This volume:
+- Persists independently of container rebuilds
+- Is mounted at `/var/www/html/files` in the container
+- Is not part of the git repository
+- Maintains proper permissions for OJS to read/write files
+
+### Backing Up Files
+
+To backup the files volume:
+```bash
+podman volume export ojs_files > ojs_files_backup.tar
+```
+
+To restore from a backup:
+```bash
+podman volume import ojs_files < ojs_files_backup.tar
+```
+
+### Important Notes
+- The files volume persists even when containers are rebuilt
+- Files are only lost if you explicitly remove the volume or run `podman system prune --volumes`
+- Regular backups are recommended for important data
+
+## Container Management
+
+- Start containers: `./setup.sh start`
+- Stop containers: `./setup.sh stop`
+- Rebuild containers: `./setup.sh build`
+- View logs: `./setup.sh logs`
+- Check status: `./setup.sh status` 

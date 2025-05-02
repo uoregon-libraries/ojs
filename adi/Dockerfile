@@ -42,7 +42,12 @@ COPY . .
 # Install Node.js dependencies
 RUN npm install
 
-# Set permissions
+# Create and set permissions for files directory
+RUN mkdir -p /var/www/html/files \
+    && chown -R www-data:www-data /var/www/html/files \
+    && chmod -R 775 /var/www/html/files
+
+# Set permissions for the rest of the application
 RUN chown -R www-data:www-data /var/www/html
 
 # Expose port
