@@ -18,6 +18,12 @@ RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install mbstring exif pcntl bcmath gd zip intl
 
+# Configure PHP
+RUN echo "error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_WARNING" > /usr/local/etc/php/conf.d/error_reporting.ini
+RUN echo "display_errors = On" >> /usr/local/etc/php/conf.d/error_reporting.ini
+RUN echo "display_startup_errors = Off" >> /usr/local/etc/php/conf.d/error_reporting.ini
+RUN echo "log_errors = On" >> /usr/local/etc/php/conf.d/error_reporting.ini
+
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
