@@ -39,11 +39,21 @@ RUN a2enmod headers
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
+# Deny access to adi directory
+RUN echo '<Directory "/var/www/html/adi">\n\
+    Order deny,allow\n\
+    Deny from all\n\
+</Directory>' > /etc/apache2/conf-available/deny-adi.conf
+RUN a2enconf deny-adi
+
 # Set working directory
 WORKDIR /var/www/html
 
 # Copy application files
 COPY . .
+
+# Ensure .htaccess has correct permissions
+RUN chmod 644 .htaccess
 
 # Install Node.js dependencies
 RUN npm install

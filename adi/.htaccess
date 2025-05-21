@@ -1,0 +1,12 @@
+# Deny access to all files in this directory
+Order deny,allow
+Deny from all
+
+# Prevent directory listing
+Options -Indexes
+
+# Prevent access to any PHP files
+<FilesMatch "\.php$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
