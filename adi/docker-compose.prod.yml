@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: adi/Dockerfile
+    ports:
+      - "8449:80"  # Standard HTTP port for production
+    volumes:
+      - ../:/var/www/html
+      - ./config.inc.php:/var/www/html/config.inc.php
+      - ojs_files:/var/www/html/files
+    depends_on: []
+
+volumes:
+  ojs_files: 
