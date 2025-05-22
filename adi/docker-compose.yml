@@ -9,7 +9,6 @@ services:
       - "8080:80"
     volumes:
       - ../:/var/www/html
-      - ./config.inc.php:/var/www/html/config.inc.php
       - ojs_files:/var/www/html/files
     environment:
       - OJS_DB_HOST=db

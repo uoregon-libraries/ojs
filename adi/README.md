@@ -77,7 +77,8 @@ This opens a MySQL shell connected to the database.
   - Password: `ojs_password`
   - Database: `ojs`
 - The application code is mounted as a volume, so changes to the code will be reflected immediately
-- The configuration file is mounted from the `adi` directory
+- The configuration file sample is in the `adi` directory. You should copy the sample into the main directory and rename it `config.inc.php`.
+  - Use the appropriate settings for your usecase, the sample is a good option for a local development environment.
 
 ## Troubleshooting
 
