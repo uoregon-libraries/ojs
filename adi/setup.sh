@@ -10,6 +10,7 @@ show_help() {
     echo "  stop        - Stop the OJS application"
     echo "  restart     - Restart the OJS application"
     echo "  build       - Rebuild the containers"
+    echo "  rebuild     - Stop, rebuild, and start the application"
     echo "  logs        - Show container logs"
     echo "  shell       - Open a shell in the app container"
     echo "  db-shell    - Open a shell in the database container"
@@ -44,6 +45,15 @@ case "$1" in
     build)
         podman compose -f docker-compose.yml build --no-cache
         echo "Containers rebuilt"
+        ;;
+    rebuild)
+        echo "Stopping containers..."
+        podman compose -f docker-compose.yml down
+        echo "Rebuilding containers..."
+        podman compose -f docker-compose.yml build --no-cache
+        echo "Starting containers..."
+        podman compose -f docker-compose.yml up -d
+        echo "OJS application rebuilt and started"
         ;;
     logs)
         podman compose -f docker-compose.yml logs -f
