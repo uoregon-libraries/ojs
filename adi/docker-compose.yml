@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   app:
+    container_name: ojs3_app
     build:
       context: ..
       dockerfile: adi/Dockerfile
@@ -19,6 +20,7 @@ services:
       - db
 
   db:
+    container_name: ojs3_db
     image: mysql:8.0
     environment:
       - MYSQL_DATABASE=ojs
