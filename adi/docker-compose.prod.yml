@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   app:
+    container_name: ojs3_prod
     build:
       context: ..
       dockerfile: adi/Dockerfile
@@ -9,7 +10,6 @@ services:
       - "8449:80"  # Standard HTTP port for production
     volumes:
       - ../:/var/www/html
-      - ./config.inc.php:/var/www/html/config.inc.php
       - ojs_files:/var/www/html/files
     depends_on: []
 
