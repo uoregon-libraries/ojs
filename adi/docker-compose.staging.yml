@@ -10,7 +10,6 @@ services:
       - "8448:80"  # Different port for staging
     volumes:
       - ../:/var/www/html
-      - ./config.inc.php:/var/www/html/config.inc.php
       - ojs_files:/var/www/html/files
     depends_on: []
 
