@@ -17,6 +17,8 @@ This directory contains configuration files for running the Open Journal Systems
 ## Setup
 
 Use the getting started guide provided by OJS: https://docs.pkp.sfu.ca/dev/documentation/en/getting-started
+There is also a useful deploy guide for things like setting up pretty URLs: https://docs.pkp.sfu.ca/admin-guide/en/deploy
+Note: both of these guides have been thrown into the `docs` folder (sibling to this file), in case they change on the live site
 
 Here are a few caveats to know:
 1. You need to run composer from the application shell (`./setup shell`) because it needs to run with PHP version 8.1 (even though the documentation says 8.x).
